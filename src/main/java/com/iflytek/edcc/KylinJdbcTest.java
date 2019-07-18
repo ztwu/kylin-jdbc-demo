@@ -21,14 +21,14 @@ public class KylinJdbcTest {
         Class.forName("org.apache.kylin.jdbc.Driver");
         System.out.println("数据库连接");
         Connection db = DriverManager.getConnection(
-                "***",
-                "***",
-                "***");
+                "jdbc:kylin://bj-kylin.bigdata.iflytek.com:80/edu_jyyun_model",
+                "ecsbd",
+                "iflytek");
         System.out.println("数据库连接成功");
 
         Statement st = db.createStatement();
 
-        select(st);
+        select1(st);
 
         st.close();
     }
@@ -48,6 +48,12 @@ public class KylinJdbcTest {
         while (rs.next()) {
             System.out.println(rs.getString(1)+":"+rs.getLong(2));
         }
+        rs.close();
+    }
+
+    private static void select1(Statement st) throws Exception{
+        ResultSet rs = st.executeQuery(
+                "");
         rs.close();
     }
 
